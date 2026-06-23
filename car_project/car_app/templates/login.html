@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+body{
+    font-family: Arial, sans-serif;
+    background:#f2f4f7;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+
+form{
+
+    background:white;
+    width:350px;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+
+}
+
+
+label{
+
+    display:block;
+    margin-top:15px;
+    font-weight:bold;
+    color:#333;
+
+}
+
+
+input{
+
+    width:100%;
+    padding:12px;
+    margin-top:5px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    box-sizing:border-box;
+
+}
+
+
+input:focus{
+
+    outline:none;
+    border-color:#007bff;
+
+}
+
+
+button{
+
+    width:100%;
+    margin-top:20px;
+    padding:12px;
+    background:#007bff;
+    color:white;
+    border:none;
+    border-radius:6px;
+    font-size:16px;
+    cursor:pointer;
+
+}
+
+
+button:hover{
+
+    background:#0056b3;
+
+}
+
+
+p{
+
+    text-align:center;
+    margin-top:15px;
+    font-weight:bold;
+
+}
+
+
+</style>
+</head>
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+
+        <label for="">Username:</label>
+        <input type="text" name="username" placeholder="Username">
+        <br>
+        <label for="">Password:</label>
+        <input type="password" name="password" placeholder="Password">
+        <br>
+        <button type="submit">Login</button>
+
+        {% if login_succses %}
+            <p style="color: green;">{{ login_succses }}</p>
+
+        {% endif %}
+
+        {% if login_fail %}
+            <p style="color: red;">{{ login_fail }}</p>
+
+        {% endif %}
+    </form>
+</body>
+</html>

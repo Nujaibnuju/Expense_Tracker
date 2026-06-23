@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Expense</title>
+
+    <style>
+
+        body{
+            font-family: Arial, sans-serif;
+            background:#f2f4f7;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+
+
+        form{
+
+            background:white;
+            width:350px;
+            padding:30px;
+            border-radius:10px;
+            box-shadow:0 5px 15px rgba(0,0,0,0.2);
+
+        }
+
+
+        h2{
+
+            text-align:center;
+            color:#333;
+
+        }
+
+
+        label{
+
+            font-weight:bold;
+            display:block;
+            margin-top:15px;
+
+        }
+
+
+        input,select{
+
+            width:100%;
+            padding:10px;
+            margin-top:5px;
+            border:1px solid #ccc;
+            border-radius:5px;
+
+        }
+
+
+        button{
+
+            width:100%;
+            margin-top:20px;
+            padding:12px;
+            background:#007bff;
+            color:white;
+            border:none;
+            border-radius:5px;
+            cursor:pointer;
+
+        }
+
+
+        button:hover{
+
+            background:#0056b3;
+
+        }
+
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<form method="post">
+
+    {% csrf_token %}
+
+
+    <h2>Edit Expense</h2>
+
+
+    <label>Title</label>
+
+    <input 
+    type="text" 
+    name="title" 
+    value="{{expense.title}}"
+    >
+
+
+
+    <label>Amount</label>
+
+    <input 
+    type="number" 
+    name="amount"
+    value="{{expense.amount}}"
+    >
+
+
+
+    <label>Category</label>
+
+
+    <select name="category">
+
+
+        <option value="Food"
+        {% if expense.category == "Food" %}selected{% endif %}>
+        Food
+        </option>
+
+
+        <option value="Travel"
+        {% if expense.category == "Travel" %}selected{% endif %}>
+        Travel
+        </option>
+
+
+        <option value="Shopping"
+        {% if expense.category == "Shopping" %}selected{% endif %}>
+        Shopping
+        </option>
+
+
+        <option value="Other"
+        {% if expense.category == "Other" %}selected{% endif %}>
+        Other
+        </option>
+
+
+    </select>
+
+
+
+    <button type="submit">
+        Update Expense
+    </button>
+
+
+</form>
+
+
+</body>
+</html>

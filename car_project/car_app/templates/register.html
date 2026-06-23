@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+body{
+    font-family: Arial, sans-serif;
+    background:#f2f4f7;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+
+form{
+
+    background:white;
+    padding:25px;
+    width:300px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.15);
+
+}
+
+
+label{
+
+    display:block;
+    margin-top:12px;
+    font-weight:bold;
+
+}
+
+
+input{
+
+    width:100%;
+    padding:10px;
+    margin-top:6px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    box-sizing:border-box;
+
+}
+
+
+input:focus{
+
+    outline:none;
+    border-color:#007bff;
+
+}
+
+
+button{
+
+    width:100%;
+    margin-top:20px;
+    padding:12px;
+    background:#007bff;
+    color:white;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:16px;
+
+}
+
+
+button:hover{
+
+    background:#0056b3;
+
+}
+
+
+a{
+
+    display:block;
+    text-align:center;
+    margin-top:15px;
+    color:#007bff;
+    text-decoration:none;
+
+}
+
+
+a:hover{
+
+    text-decoration:underline;
+
+}
+
+
+p{
+
+    text-align:center;
+    font-weight:bold;
+
+}
+</style>
+</head>
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+
+        <label for="">Username:</label>
+        <input type="text" name="username" placeholder="Username">
+        <br>
+        <label for="">Email:</label>
+        <input type="email" name="email" placeholder="Email">
+        <br>
+        <label for="">Password:</label>
+        <input type="password" name="password" placeholder="Password">
+        <br>
+        <button type="submit">Register</button>
+
+        <a href="{% url 'get_login' %}">Login</a>
+
+        {% if already %}
+            <p style="color: red;">{{ already }}</p>
+        {% endif %}
+
+        {% if success %}
+
+            <p style="color: green;">{{ success }}</p>
+
+        {% endif %}
+    </form>
+</body>
+</html>

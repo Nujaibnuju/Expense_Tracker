@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+body{
+    font-family: Arial, sans-serif;
+    background:#f2f4f8;
+    padding:30px;
+}
+
+
+h2{
+    text-align:center;
+    color:#333;
+}
+
+
+h3{
+    text-align:center;
+    background:#ffffff;
+    padding:15px;
+    width:300px;
+    margin:20px auto;
+    border-radius:8px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+
+
+a{
+    display:inline-block;
+    text-decoration:none;
+    background:#007bff;
+    color:white;
+    padding:10px 15px;
+    border-radius:5px;
+    margin-bottom:20px;
+}
+
+
+a:hover{
+    background:#0056b3;
+}
+
+
+table{
+
+    width:90%;
+    margin:auto;
+    background:white;
+    border-collapse:collapse;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+
+}
+
+
+th{
+
+    background:#007bff;
+    color:white;
+    padding:12px;
+
+}
+
+
+td{
+
+    padding:12px;
+    text-align:center;
+    border-bottom:1px solid #ddd;
+
+}
+
+
+tr:hover{
+
+    background:#f1f1f1;
+
+}
+
+
+td a{
+
+    background:#28a745;
+    padding:6px 12px;
+    margin:3px;
+    font-size:14px;
+
+}
+
+
+td a:last-child{
+
+    background:#dc3545;
+
+}
+
+
+</style>
+</head>
+<body>
+  
+    <h2>Welcome {{username}}</h2>
+
+
+<h3>
+Total Expense : {{total}}
+</h3>
+
+
+<a href="{% url 'add_expense' %}">
+Add Expense
+</a>
+
+
+<table border="1">
+
+<tr>
+<th>Title</th>
+<th>Amount</th>
+<th>Category</th>
+<th>Date</th>
+<th>Action</th>
+</tr>
+
+
+{% for e in expenses %}
+
+<tr>
+
+<td>{{e.title}}</td>
+
+<td>{{e.amount}}</td>
+
+<td>{{e.category}}</td>
+
+<td>{{e.date}}</td>
+
+
+<td>
+
+<a href="{% url 'edit_expense' e.id %}">
+Edit
+</a>
+
+
+<a href="{% url 'delete_expense' e.id %}">
+Delete
+</a>
+
+</td>
+
+</tr>
+
+
+{% endfor %}
+
+
+</table>
+</body>
+</html>
